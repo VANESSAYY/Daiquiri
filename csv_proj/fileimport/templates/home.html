@@ -1,0 +1,49 @@
+<style>
+* {
+    background-color: #ece8fe;
+}
+h1 {
+    text-align: center;
+}
+#btn {
+    
+}
+#container {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+</style>
+
+
+<h1>This is Class Information page for Ewha!</h1>
+
+<div class="btn">
+    <form action="{% url 'filter' %}" method="GET">
+        <button type="submit" name="classification" value="Liberal Arts Courses">Liberal Arts Courses</button>
+    </form>
+    <form action="{% url 'filter' %}" method="GET">
+            <button type="submit" name="classification" value="Major Foundation">Major Foundation</button>
+    </form>
+    <form action="{% url 'filter' %}" method="GET">
+            <button type="submit" name="classification" value="Major Elective">Major Elective</button>
+    </form>
+    <form action="{% url 'filter' %}" method="GET">
+            <button type="submit" name="classification" value="Major Requisite">Major Requisite</button>
+    </form>
+</div>
+
+{% for class in classes.all %}
+<div class="container">
+    <p>Course No. : {{ class.courseno }}</p>
+    <p>Class No. : {{ class.classno }}</p>
+    <p>Title : {{ class.title }}</p>
+    <p>Classification : {{ class.classification }}</p>
+    <p>Instructor : {{ class.instructor }}</p>
+    <p>Credit : {{ class.credit }}</p>
+    <p>Hour : {{ class.hour }}</p>
+    <hr color="gray">
+    
+</div>
+{% endfor %}
+
+
